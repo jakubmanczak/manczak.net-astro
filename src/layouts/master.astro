@@ -1,0 +1,149 @@
+---
+const {status} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>manczak.net</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href={Astro.resolve('../styles/master.scss')}>
+		<link rel="icon" type="image/x-icon" href="favicon.png">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<meta name="description" content="
+			My name is Jakub Mańczak, people online call me jamesen
+			and I'm learning IT at a High School in Poznań, Poland.
+		">
+		<script defer>
+			let keyHistory = '';
+			document.addEventListener('keydown', ev => {
+				keyHistory += ev.key;
+				if(keyHistory.endsWith('splash')){
+					getSplash();
+					keyHistory = '';
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<header>
+			<nav tabindex="0">
+				<img src="/assets/menu.svg" alt="menu button">
+				<div class="dropdown dropdown-left">
+					<a href="/" class="dropdown-link">
+						<img src="/assets/home.svg" alt="house icon">
+						Homepage
+					</a>
+					<a href="/info" class="dropdown-link">
+						<img src="/assets/user.svg" alt="user icon">
+						About Me
+					</a>
+					<a href="/read" class="dropdown-link">
+						<img src="/assets/edit.svg" alt="pencil icon">
+						Writings
+					</a>
+					<a href="/dash" class="dropdown-link">
+						<img src="/assets/clipboard.svg" alt="clipboard icon">
+						Projects
+					</a>
+				</div>
+			</nav>
+			<section class="mStatus washed">{status}</section>
+			<nav tabindex="-1" class="disabled">
+				<img src="/assets/sliders.svg" alt="preferences button">
+				<!-- <div class="dropdown dropdown-rite">
+					a
+				</div> -->
+			</nav>
+		</header>
+		<div class="slotClass">
+			<slot />
+		</div>
+		<footer class="tc">
+			manczak.net
+			<span class="washed">
+				~ 2019-2022 <br>
+				&copy; Jakub Mańczak
+			</span>
+		</footer>
+	</body>
+</html>
+
+<style lang="scss">
+	body{
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		footer{ padding: 1rem; }
+		.slotClass{ flex: 1; }
+		header{
+			padding: 1rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			nav{
+				padding: .5rem;
+				border-radius: var(--radius1);
+				transition-duration: var(--trandur);
+				border: 2px solid var(--dark1);
+				outline: none;
+				position: relative;
+				img{
+					display: block;
+					height: 24px;
+					filter: invert(40%);
+				}
+				&:hover{
+					background-color: var(--dark2);
+					border: 2px solid var(--dark2);
+					cursor: pointer;
+					img{ filter: invert(80%); }
+				}
+				&:focus,&:focus-within{
+					border: 2px solid var(--purp1);
+					img{ filter: invert(80%); }
+					.dropdown{ display: block; }
+				}
+				&.disabled{
+					img{ filter: invert(20%); }
+				}
+				.dropdown{
+					display: none;
+					position: absolute;
+					margin-top: 1rem;
+					border-radius: var(--radius1);
+					background-color: var(--dark1);
+					border: 2px solid var(--dark2);
+					padding: 1rem 0;
+					z-index: 1;
+					width: 12rem;
+					&.dropdown-left{ left: 0; }
+					&.dropdown-rite{ right: 0; }
+					.dropdown-link{
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						padding: .5rem 1rem;
+						color: var(--washed-dark);
+						background: var(--dark1);
+						img{
+							filter: invert(40%);
+						}
+						&:hover,&:focus{
+							color: var(--lite1);
+							background: var(--dark2);
+							img{
+								filter: invert(70%) brightness(125%);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 800px){
+		.slotClass{
+			padding: 1rem;
+		}
+	}
+</style>

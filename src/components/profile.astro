@@ -1,0 +1,73 @@
+<div class="profile">
+	<div class="profileText">
+		<h2>jakub mańczak</h2>
+		<p class="washed" id="splashtext">splashtext not read correctly</p>
+		<p class="profileDescription">
+			My name is <a href="/info">Jakub Mańczak</a>, people online call me <em>jamesen</em>
+			and I'm learning IT at a High School in Poznań, Poland.
+		</p>
+	</div>
+	<img src="/favicon.png" alt="photo of me">
+	<script>
+		const splashTexts = [
+			'featherless biped',
+			'Slime is falling from the sky!',
+			'You feel an evil presence watching you...',
+			'Raise a glass to freedom; Something they can never take away',
+			`Get mad! Don't make lemonade!`,
+			'The answer is beneath us.',
+			'przepraszam bo ja załamanie nerwowe przeszedłem przed chwilą',
+			'Wenn der Kuchen ist Süßig...',
+			'Zdefiniujmy pojęcie kartkówki...',
+			'kocham ich; kocham ich całym wagonem',
+			`I wear glasses because I can't C#.`,
+			'if you water water, it grows'
+		];
+		let splash;
+
+		function getSplash(){
+			splash = splashTexts[ Math.floor( Math.random() * splashTexts.length ) ];
+			document.querySelector('#splashtext').innerText = splash;
+		}
+		getSplash();
+	</script>
+</div>
+
+<style lang="scss" scoped>
+	.profile{
+		display: flex;
+		justify-content: space-between;
+		margin: 4rem 0;
+		animation-name: profileAnim;
+		animation-duration: .5s;
+		.profileDescription{
+			margin-top: 1rem;
+			max-width: 48ch;
+		}
+		img{
+			height: 128px;
+			background: var(--purp2);
+			border-radius: var(--radius3);
+			transition-duration: var(--trandur);
+			outline: 2px solid var(--dark1);
+			&:hover,&:focus{
+				cursor: pointer;
+				outline: 2px solid var(--purp1);
+				transform: rotate(6deg);
+			}
+		}
+	}
+	@media screen and (max-width: 800px){
+		.profile{
+			margin: 2rem 0;
+			flex-direction: column-reverse;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+	}
+	@keyframes profileAnim{
+		from{ opacity: 0; transform: rotate(-1deg) scale(.9); }
+		to{ opacity: 1; transform: rotate(0) scale(1); }
+	}
+</style>

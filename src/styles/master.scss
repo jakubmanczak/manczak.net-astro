@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap');
+:root {
+	--dark0: #000000;
+	--dark1: #1a1a1a;
+	--dark2: #2a2a2a;
+	--dark3: #3a3a3a;
+	--washed-dark: #8d8d8d;
+	--lite0: #ffffff;
+	--lite1: #f0f0f0;
+	--purp1: #9072ca;
+	--purp2: #40325e;
+
+	--layout-width: 768px;
+	--font-main: 'Quicksand', sans-serif;
+	--font-big: 'Lexend', sans-serif;
+	--trandur: 0.15s;
+	--radius1: 0.5rem;
+	--radius2: 15rem;
+	--radius3: 50%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: var(--font-main);
+	background-color: var(--dark1);
+	color: var(--lite1);
+	font-size: 1.1rem;
+}
+
+a {
+	--background-link-color: var(--dark2);
+	text-decoration: none;
+	color: var(--purp1);
+	// color: inherit;
+	outline: none;
+	background: linear-gradient(
+		to bottom,
+		var(--background-link-color) 0%,
+		var(--background-link-color) 100%
+	);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+	background-size: 2px 2px;
+	transition-duration: var(--trandur);
+	&:hover,
+	&:focus {
+		background-size: 2px 1.3rem;
+	}
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-big);
+}
+
+.card {
+	display: inline-block;
+	border: 2px solid var(--dark3);
+	border-radius: var(--radius1);
+	padding: 1rem;
+	margin: 1rem 0;
+}
+
+.washed {
+	color: var(--washed-dark);
+}
+.tc {
+	text-align: center;
+}
+.constrained {
+	width: var(--layout-width);
+	margin: 0 auto;
+}
+::selection {
+	background-color: var(--purp1);
+}
+
+@media screen and (max-width: 800px) {
+	body {
+		font-size: 1rem;
+	}
+	.constrained {
+		width: 100%;
+	}
+}
