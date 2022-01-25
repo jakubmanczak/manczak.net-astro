@@ -1,5 +1,62 @@
 {
 	"github": {
 		"silent": true
-	}
+	},
+	"redirects": [
+		{
+			"source": "/source",
+			"destination": "https://github.com/jakubmanczak/manczak.net",
+			"permanent": true
+		},
+		{
+			"source": "/steam",
+			"destination": "https://steamcommunity.com/id/jakubmanczak",
+			"permanent": true
+		},
+		{
+			"source": "/github",
+			"destination": "https://github.com/jakubmanczak",
+			"permanent": true
+		},
+		{
+			"source": "/spotify",
+			"destination": "https://open.spotify.com/user/t9oxitgtv8ji36cfwxk23g1qq",
+			"permanent": true
+		},
+		{
+			"source": "/telegram",
+			"destination": "https://t.me/jakubmanczak",
+			"permanent": true
+		},
+		{
+			"source": "/anilist",
+			"destination": "https://anilist.co/user/j4mesen",
+			"permanent": true
+		},
+		{
+			"source": "/facebook",
+			"destination": "https://facebook.com/manczakjakub",
+			"permanent": true
+		},
+		{
+			"source": "/instagram",
+			"destination": "https://www.instagram.com/j4kubmanczak/",
+			"permanent": true
+		},
+		{
+			"source": "/linkedin",
+			"destination": "https://www.linkedin.com/in/jakubmanczak/",
+			"permanent": true
+		},
+		{
+			"source": "/twitter",
+			"destination": "https://twitter.com/j4kubmanczak",
+			"permanent": true
+		},
+		{
+			"source": "/osu",
+			"destination": "https://osu.ppy.sh/users/11088770",
+			"permanent": true
+		}
+	]
 }
