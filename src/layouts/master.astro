@@ -68,11 +68,11 @@ const {status} = Astro.props;
 			<nav tabindex="0">
 				<img src="/assets/svg/sliders.svg" alt="preferences button">
 				<div class="dropdown dropdown-rite">
-					<a class="dropdown-link disabled" tabindex="-1" id="controlAnimation">
+					<a class="dropdown-link" tabindex="0" id="controlAnimation">
 						<img src="/assets/svg/video.svg" alt="video icon">
 						Animations
-						<!-- <img src="/assets/svg/square.svg" alt="animations off control icon" id="controlAnimationOffIcon"> -->
-						<img src="/assets/svg/check-square.svg" alt="animations on control icon" id="controlAnimationOnIcon">
+						<img src="/assets/svg/square.svg" alt="animations off control icon" id="controlAnimationOffIcon" style="display: none;">
+						<img src="/assets/svg/check-square.svg" alt="animations on control icon" id="controlAnimationOnIcon" style="display: none;">
 					</a>
 					<a class="dropdown-link disabled" tabindex="-1" id="controlSound">
 						<img src="/assets/svg/volume-2.svg" alt="volume icon">
@@ -112,6 +112,43 @@ const {status} = Astro.props;
 				&copy; Jakub Mańczak
 			</span>
 		</footer>
+		<script defer> // script for the settings
+			if(!window.localStorage.getItem('sNoMotion')){
+				window.localStorage.setItem('sNoMotion', 'false');
+			}
+
+			// checking localStorage and applying the settings according to them
+			if(window.localStorage.getItem('sNoMotion') === 'true'){
+				document.querySelector('body').classList.add('nomotion');
+				document.querySelector('#controlAnimationOffIcon').style.display = 'block';
+			}else{
+				document.querySelector('#controlAnimationOnIcon').style.display = 'block';
+			}
+
+			// settings functions
+			function setNoMotionSetting(){
+				if(window.localStorage.getItem('sNoMotion') === 'false'){
+					window.localStorage.setItem('sNoMotion', 'true');
+					document.querySelector('body').classList.add('nomotion');
+					document.querySelector('#controlAnimationOffIcon').style.display = 'block';
+					document.querySelector('#controlAnimationOnIcon').style.display = 'none';
+				}else{
+					window.localStorage.setItem('sNoMotion', 'false');
+					document.querySelector('body').classList.remove('nomotion');
+					document.querySelector('#controlAnimationOffIcon').style.display = 'none';
+					document.querySelector('#controlAnimationOnIcon').style.display = 'block';
+				}
+			}
+
+			// settings dropdown - nomotion switch
+			document.querySelector('#controlAnimation').addEventListener('click', () => {
+				setNoMotionSetting();
+			});
+			document.querySelector('#controlAnimation').addEventListener('keydown', ev => {
+				if(ev.key === 'Enter'){ setNoMotionSetting(); }
+			})
+
+		</script>
 	</body>
 </html>
 
@@ -179,7 +216,7 @@ const {status} = Astro.props;
 							filter: invert(40%);
 						}
 						/* .dropdown-extLink{ */
-						img:nth-of-type(2){
+						img:nth-of-type(2),img:nth-of-type(3){
 							transform: scale(.7);
 							margin-left: auto;
 						}
