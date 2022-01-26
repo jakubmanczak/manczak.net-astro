@@ -64,11 +64,28 @@ const {status} = Astro.props;
 				</div>
 			</nav>
 			<section class="mStatus washed">{status}</section>
-			<nav tabindex="-1" class="disabled">
+			<!-- <nav tabindex="-1" class="disabled"> -->
+			<nav tabindex="0">
 				<img src="/assets/svg/sliders.svg" alt="preferences button">
-				<!-- <div class="dropdown dropdown-rite">
-					a
-				</div> -->
+				<div class="dropdown dropdown-rite">
+					<a class="dropdown-link disabled" id="controlAnimation" tabindex="-1">
+						<img src="/assets/svg/video.svg" alt="video icon">
+						Animations
+					</a>
+					<a class="dropdown-link disabled" id="controlTheme" tabindex="-1">
+						<img src="/assets/svg/moon.svg" alt="moon icon">
+						Dark Theme
+					</a>
+					<a class="dropdown-link disabled" id="controlSound" tabindex="-1">
+						<img src="/assets/svg/volume-2.svg" alt="volume icon">
+						Sounds
+					</a>
+					<div class="dropdown-divider"></div>
+					<a href="/source" class="dropdown-link">
+						<img src="/assets/svg/code.svg" alt="code icon">
+						Source Code
+					</a>
+				</div>
 			</nav>
 		</header>
 		<div class="slotClass">
@@ -132,8 +149,7 @@ const {status} = Astro.props;
 					border: 2px solid var(--dark2);
 					padding: var(--dropdown-inside-margins);
 					z-index: 1;
-					width: 12rem;
-
+					width: 13rem;
 					&.dropdown-left{ left: 0; }
 					&.dropdown-rite{ right: 0; }
 					.dropdown-link{
@@ -144,8 +160,12 @@ const {status} = Astro.props;
 						padding: .5rem 1rem;
 						color: var(--washed-dark);
 						background: var(--dark1);
+						outline: none;
 						img{
 							filter: invert(40%);
+						}
+						&.disabled{
+							opacity: .5;
 						}
 						&:hover,&:focus{
 							color: var(--lite1);
