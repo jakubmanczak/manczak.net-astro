@@ -50,13 +50,14 @@ const {status} = Astro.props;
 					<a href="/github" class="dropdown-link">
 						<img src="/assets/svg/github.svg" alt="github icon">
 						GitHub
-						<!-- <img src="/assets/svg/external-link.svg" alt="external link icon"> -->
+						<img src="/assets/svg/external-link.svg" class="dropdown-extLink" alt="external link icon">
 					</a>
 					<a href="/twitter" class="dropdown-link">
 						<img src="/assets/svg/twitter.svg" alt="twitter icon">
 						Twitter
+						<img src="/assets/svg/external-link.svg" class="dropdown-extLink" alt="external link icon">
 					</a>
-					<!-- <div class="dropdown-divider"></div> -->
+					<div class="dropdown-divider"></div>
 					<a href="/urls" class="dropdown-link">
 						<img src="/assets/svg/link.svg" alt="link icon">
 						All Links
@@ -68,22 +69,36 @@ const {status} = Astro.props;
 			<nav tabindex="0">
 				<img src="/assets/svg/sliders.svg" alt="preferences button">
 				<div class="dropdown dropdown-rite">
-					<a class="dropdown-link disabled" id="controlAnimation" tabindex="-1">
+					<a class="dropdown-link disabled" tabindex="-1" id="controlAnimation">
 						<img src="/assets/svg/video.svg" alt="video icon">
 						Animations
+						<!-- <img src="/assets/svg/square.svg" alt="animations off control icon" id="controlAnimationOffIcon"> -->
+						<img src="/assets/svg/check-square.svg" alt="animations on control icon" id="controlAnimationOnIcon">
 					</a>
-					<a class="dropdown-link disabled" id="controlTheme" tabindex="-1">
-						<img src="/assets/svg/moon.svg" alt="moon icon">
-						Dark Theme
-					</a>
-					<a class="dropdown-link disabled" id="controlSound" tabindex="-1">
+					<a class="dropdown-link disabled" tabindex="-1" id="controlSound">
 						<img src="/assets/svg/volume-2.svg" alt="volume icon">
 						Sounds
+						<!-- <img src="/assets/svg/square.svg" alt="sounds off control icon" id="controlSoundOffIcon"> -->
+						<img src="/assets/svg/check-square.svg" alt="sounds on control icon" id="controlSoundOnIcon">
+					</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-link disabled" tabindex="-1" id="controlLiteTheme">
+						<img src="/assets/svg/sun.svg" alt="sun icon">
+						Light Theme
+						<img src="/assets/svg/square.svg" alt="light theme off control icon" id="controlLiteThemeOffIcon">
+						<!-- <img src="/assets/svg/check-square.svg" alt="light theme on control icon" id="controlLiteThemeOnIcon"> -->
+					</a>
+					<a class="dropdown-link disabled" tabindex="-1" id="controlDarkTheme">
+						<img src="/assets/svg/moon.svg" alt="moon icon">
+						Dark Theme
+						<!-- <img src="/assets/svg/square.svg" alt="dark theme off control icon" id="controlDarkThemeOffIcon"> -->
+						<img src="/assets/svg/check-square.svg" alt="dark theme on control icon" id="controlDarkThemeOnIcon">
 					</a>
 					<div class="dropdown-divider"></div>
 					<a href="/source" class="dropdown-link">
 						<img src="/assets/svg/code.svg" alt="code icon">
 						Source Code
+						<img src="/assets/svg/external-link.svg" class="dropdown-extLink" alt="external link icon">
 					</a>
 				</div>
 			</nav>
@@ -149,7 +164,7 @@ const {status} = Astro.props;
 					border: 2px solid var(--dark2);
 					padding: var(--dropdown-inside-margins);
 					z-index: 1;
-					width: 13rem;
+					width: 14rem;
 					&.dropdown-left{ left: 0; }
 					&.dropdown-rite{ right: 0; }
 					.dropdown-link{
@@ -163,6 +178,11 @@ const {status} = Astro.props;
 						outline: none;
 						img{
 							filter: invert(40%);
+						}
+						/* .dropdown-extLink{ */
+						img:nth-of-type(2){
+							transform: scale(.7);
+							margin-left: auto;
 						}
 						&.disabled{
 							opacity: .5;
