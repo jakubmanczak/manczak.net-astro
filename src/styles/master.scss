@@ -18,6 +18,12 @@
 	--radius1: 0.5rem;
 	--radius2: 15rem;
 	--radius3: 50%;
+
+	// animation timings - brought here for nomotion
+	--profile-animation-duration: 0.5s;
+	--button1-animation-duration: 0.75s;
+	--button2-animation-duration: 1s;
+	--button3-animation-duration: 1.25s;
 }
 * {
 	margin: 0;
@@ -28,6 +34,14 @@ body {
 	background-color: var(--dark1);
 	color: var(--lite1);
 	font-size: 1.1rem;
+}
+
+.nomotion {
+	--trandur: 0;
+	--profile-animation-duration: 0;
+	--button1-animation-duration: 0;
+	--button2-animation-duration: 0;
+	--button3-animation-duration: 0;
 }
 
 a {
