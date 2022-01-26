@@ -46,6 +46,21 @@ const {status} = Astro.props;
 						<img src="/assets/svg/clipboard.svg" alt="clipboard icon">
 						Projects
 					</a>
+					<div class="dropdown-divider"></div>
+					<a href="/github" class="dropdown-link">
+						<img src="/assets/svg/github.svg" alt="github icon">
+						GitHub
+						<!-- <img src="/assets/svg/external-link.svg" alt="external link icon"> -->
+					</a>
+					<a href="/twitter" class="dropdown-link">
+						<img src="/assets/svg/twitter.svg" alt="twitter icon">
+						Twitter
+					</a>
+					<!-- <div class="dropdown-divider"></div> -->
+					<a href="/urls" class="dropdown-link">
+						<img src="/assets/svg/link.svg" alt="link icon">
+						All Links
+					</a>
 				</div>
 			</nav>
 			<section class="mStatus washed">{status}</section>
@@ -108,20 +123,23 @@ const {status} = Astro.props;
 					img{ filter: invert(20%); }
 				}
 				.dropdown{
+					--dropdown-inside-margins: .7rem 0;
 					display: none;
 					position: absolute;
 					margin-top: 1rem;
 					border-radius: var(--radius1);
 					background-color: var(--dark1);
 					border: 2px solid var(--dark2);
-					padding: 1rem 0;
+					padding: var(--dropdown-inside-margins);
 					z-index: 1;
 					width: 12rem;
+
 					&.dropdown-left{ left: 0; }
 					&.dropdown-rite{ right: 0; }
 					.dropdown-link{
 						display: flex;
-						justify-content: space-between;
+						gap: 1rem;
+						/* justify-content: space-between; */
 						align-items: center;
 						padding: .5rem 1rem;
 						color: var(--washed-dark);
@@ -136,6 +154,12 @@ const {status} = Astro.props;
 								filter: invert(70%) brightness(125%);
 							}
 						}
+					}
+					.dropdown-divider{
+						display: block;
+						height: 2px;
+						margin: var(--dropdown-inside-margins);
+						background-color: var(--dark2);
 					}
 				}
 			}
