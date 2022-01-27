@@ -15,11 +15,10 @@ const {status} = Astro.props;
 			and I'm learning IT at a High School in Poznań, Poland.
 		">
 		<script defer>
-			let sfxSwoosh = new Audio('/assets/swoosh.mp3');
 			function playSfx(name){
 				if(!sMuteSound){
 					switch(name){
-						case 'sfxSwoosh': sfxSwoosh.play(); break;
+						case 'sfxSwoosh': new Audio('/assets/swoosh.mp3').play(); break;
 						default: console.log('no such sfx');
 					}
 				}
