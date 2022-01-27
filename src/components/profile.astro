@@ -31,7 +31,9 @@
 		}
 		getSplash();
 
-		document.querySelector('.profile>img').addEventListener('click', () => { getSplash(); });
+		document.querySelector('.profile>img').addEventListener('click', () => {
+			getSplash(); playSfx('sfxSwoosh');
+		});
 	</script>
 </div>
 

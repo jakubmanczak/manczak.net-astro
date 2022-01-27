@@ -15,6 +15,17 @@ const {status} = Astro.props;
 			and I'm learning IT at a High School in Poznań, Poland.
 		">
 		<script defer>
+			let sfxSwoosh = new Audio('/assets/swoosh.mp3');
+			function playSfx(name){
+				if(!sMuteSound){
+					switch(name){
+						case 'sfxSwoosh': sfxSwoosh.play(); break;
+						default: console.log('no such sfx');
+					}
+				}
+			}
+		</script>
+		<script defer>
 			let keyHistory = '';
 			document.addEventListener('keydown', ev => {
 				keyHistory += ev.key;
