@@ -74,11 +74,11 @@ const {status} = Astro.props;
 						<img src="/assets/svg/square.svg" alt="animations off control icon" id="controlAnimationOffIcon" style="display: none;">
 						<img src="/assets/svg/check-square.svg" alt="animations on control icon" id="controlAnimationOnIcon" style="display: none;">
 					</a>
-					<a class="dropdown-link disabled" tabindex="-1" id="controlSound">
+					<a class="dropdown-link" tabindex="0" id="controlSound">
 						<img src="/assets/svg/volume-2.svg" alt="volume icon">
 						Sounds
-						<!-- <img src="/assets/svg/square.svg" alt="sounds off control icon" id="controlSoundOffIcon"> -->
-						<img src="/assets/svg/check-square.svg" alt="sounds on control icon" id="controlSoundOnIcon">
+						<img src="/assets/svg/square.svg" alt="sounds off control icon" id="controlSoundOffIcon" style="display: none;">
+						<img src="/assets/svg/check-square.svg" alt="sounds on control icon" id="controlSoundOnIcon" style="display: none;">
 					</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-link disabled" tabindex="-1" id="controlLiteTheme">
@@ -113,8 +113,14 @@ const {status} = Astro.props;
 			</span>
 		</footer>
 		<script defer> // script for the settings
+			let sMuteSound;
+
+			// apply default settings if localStorage doesn't exist
 			if(!window.localStorage.getItem('sNoMotion')){
 				window.localStorage.setItem('sNoMotion', 'false');
+			}
+			if(!window.localStorage.getItem('sMuteSound')){
+				window.localStorage.setItem('sMuteSound', 'false');
 			}
 
 			// checking localStorage and applying the settings according to them
@@ -123,6 +129,12 @@ const {status} = Astro.props;
 				document.querySelector('#controlAnimationOffIcon').style.display = 'block';
 			}else{
 				document.querySelector('#controlAnimationOnIcon').style.display = 'block';
+			}
+			if(window.localStorage.getItem('sMuteSound') === 'true'){
+				sMuteSound = true;
+				document.querySelector('#controlSoundOffIcon').style.display = 'block';
+			}else{
+				document.querySelector('#controlSoundOnIcon').style.display = 'block';
 			}
 
 			// settings functions
@@ -138,6 +150,21 @@ const {status} = Astro.props;
 					document.querySelector('#controlAnimationOffIcon').style.display = 'none';
 					document.querySelector('#controlAnimationOnIcon').style.display = 'block';
 				}
+				console.log(`noMotion setting now set to ${window.localStorage.getItem('sNoMotion')}!`);
+			}
+			function setMuteSoundSetting(){
+				if(window.localStorage.getItem('sMuteSound') === 'false'){
+					window.localStorage.setItem('sMuteSound', 'true');
+					sMuteSound = true;
+					document.querySelector('#controlSoundOffIcon').style.display = 'block';
+					document.querySelector('#controlSoundOnIcon').style.display = 'none';
+				}else{
+					window.localStorage.setItem('sMuteSound', 'false');
+					sMuteSound = false;
+					document.querySelector('#controlSoundOffIcon').style.display = 'none';
+					document.querySelector('#controlSoundOnIcon').style.display = 'block';
+				}
+				console.log(`muteSound setting now set to ${sMuteSound}!`);
 			}
 
 			// settings dropdown - nomotion switch
@@ -146,6 +173,14 @@ const {status} = Astro.props;
 			});
 			document.querySelector('#controlAnimation').addEventListener('keydown', ev => {
 				if(ev.key === 'Enter'){ setNoMotionSetting(); }
+			})
+
+			// settings dropdown - mutesound switch
+			document.querySelector('#controlSound').addEventListener('click', () => {
+				setMuteSoundSetting();
+			});
+			document.querySelector('#controlSound').addEventListener('keydown', ev => {
+				if(ev.key === 'Enter'){ setMuteSoundSetting(); }
 			})
 
 		</script>
