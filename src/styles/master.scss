@@ -24,6 +24,7 @@
 	--button1-animation-duration: 0.75s;
 	--button2-animation-duration: 1s;
 	--button3-animation-duration: 1.25s;
+	--icon-setting-toggle-animation-duration: 0.5s;
 }
 * {
 	margin: 0;
@@ -43,6 +44,7 @@ body {
 	--button1-animation-duration: 0;
 	--button2-animation-duration: 0;
 	--button3-animation-duration: 0;
+	--icon-setting-toggle-animation-duration: 0;
 }
 
 a {

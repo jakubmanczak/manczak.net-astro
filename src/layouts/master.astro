@@ -32,12 +32,12 @@ const {status} = Astro.props;
 					getSplash();
 					keyHistory = '';
 				}
-			})
+			});
 		</script>
 	</head>
 	<body>
 		<header>
-			<nav tabindex="0">
+			<nav tabindex="0" id="navDrop">
 				<img src="/assets/svg/menu.svg" alt="menu button">
 				<div class="dropdown dropdown-left">
 					<a href="/" class="dropdown-link">
@@ -75,7 +75,7 @@ const {status} = Astro.props;
 				</div>
 			</nav>
 			<section class="mStatus washed">{status}</section>
-			<nav tabindex="0">
+			<nav tabindex="0" id="settingsDrop">
 				<img src="/assets/svg/sliders.svg" alt="preferences button">
 				<div class="dropdown dropdown-rite">
 					<a class="dropdown-link" tabindex="0" id="controlAnimation">
@@ -159,6 +159,9 @@ const {status} = Astro.props;
 					document.querySelector('body').classList.remove('nomotion');
 					document.querySelector('#controlAnimationOffIcon').style.display = 'none';
 					document.querySelector('#controlAnimationOnIcon').style.display = 'block';
+					document.querySelector('#controlAnimationOffIcon').classList.add('iconAnim');
+					document.querySelector('#controlAnimationOnIcon').classList.add('iconAnim');
+					removeIconAnims();
 				}
 				console.log(`noMotion setting now set to ${window.localStorage.getItem('sNoMotion')}!`);
 			}
@@ -168,11 +171,17 @@ const {status} = Astro.props;
 					sMuteSound = true;
 					document.querySelector('#controlSoundOffIcon').style.display = 'block';
 					document.querySelector('#controlSoundOnIcon').style.display = 'none';
+					document.querySelector('#controlSoundOffIcon').classList.add('iconAnim');
+					document.querySelector('#controlSoundOnIcon').classList.add('iconAnim');
+					removeIconAnims();
 				}else{
 					window.localStorage.setItem('sMuteSound', 'false');
 					sMuteSound = false;
 					document.querySelector('#controlSoundOffIcon').style.display = 'none';
 					document.querySelector('#controlSoundOnIcon').style.display = 'block';
+					document.querySelector('#controlSoundOffIcon').classList.add('iconAnim');
+					document.querySelector('#controlSoundOnIcon').classList.add('iconAnim');
+					removeIconAnims();
 				}
 				console.log(`muteSound setting now set to ${sMuteSound}!`);
 			}
@@ -183,7 +192,7 @@ const {status} = Astro.props;
 			});
 			document.querySelector('#controlAnimation').addEventListener('keydown', ev => {
 				if(ev.key === 'Enter'){ setNoMotionSetting(); }
-			})
+			});
 
 			// settings dropdown - mutesound switch
 			document.querySelector('#controlSound').addEventListener('click', () => {
@@ -191,7 +200,20 @@ const {status} = Astro.props;
 			});
 			document.querySelector('#controlSound').addEventListener('keydown', ev => {
 				if(ev.key === 'Enter'){ setMuteSoundSetting(); }
-			})
+			});
+
+			// resetting the onclick animation for the icons
+			// so that it doesnt play on every dropdown open if it was changed in current session
+			// (( (( curse the css animation system!! )) 
+			function removeIconAnims(){
+				setTimeout(() => {					
+					document.querySelector('#controlAnimationOffIcon').classList.remove('iconAnim');
+					document.querySelector('#controlAnimationOnIcon').classList.remove('iconAnim');
+					document.querySelector('#controlSoundOffIcon').classList.remove('iconAnim');
+					document.querySelector('#controlSoundOnIcon').classList.remove('iconAnim');
+				}, 500); // this method comes with a caveat of bugging out a bit when the switch
+				// is being spammed a lot, oftentimes resulting in the animation being interrupted
+			}
 
 		</script>
 	</body>
@@ -260,6 +282,10 @@ const {status} = Astro.props;
 						outline: none;
 						img{
 							filter: invert(40%);
+							&.iconAnim{
+								animation-name: iconAnim;
+								animation-duration: var(--icon-setting-toggle-animation-duration);
+							}
 						}
 						/* .dropdown-extLink{ */
 						img:nth-of-type(2),img:nth-of-type(3){
@@ -291,5 +317,12 @@ const {status} = Astro.props;
 		.slotClass{
 			padding: 1rem;
 		}
+	}
+	@keyframes iconAnim{
+		/* 0%{ transform: rotate(0deg); }
+		50%{ transform: rotate(180deg); }
+		100%{ transform: rotate(360deg) } */
+		from{ transform: rotate(0deg) scale(.7) }
+		to{ transform: rotate(360deg) scale(.7) }
 	}
 </style>
