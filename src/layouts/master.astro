@@ -188,18 +188,18 @@ const {status} = Astro.props;
 
 			// settings dropdown - nomotion switch
 			document.querySelector('#controlAnimation').addEventListener('click', () => {
-				setNoMotionSetting();
+				setNoMotionSetting(); playSfx('sfxSwoosh');
 			});
 			document.querySelector('#controlAnimation').addEventListener('keydown', ev => {
-				if(ev.key === 'Enter'){ setNoMotionSetting(); }
+				if(ev.key === 'Enter'){ setNoMotionSetting(); playSfx('sfxSwoosh'); }
 			});
 
 			// settings dropdown - mutesound switch
 			document.querySelector('#controlSound').addEventListener('click', () => {
-				setMuteSoundSetting();
+				setMuteSoundSetting(); playSfx('sfxSwoosh');
 			});
 			document.querySelector('#controlSound').addEventListener('keydown', ev => {
-				if(ev.key === 'Enter'){ setMuteSoundSetting(); }
+				if(ev.key === 'Enter'){ setMuteSoundSetting(); playSfx('sfxSwoosh'); }
 			});
 
 			// resetting the onclick animation for the icons
