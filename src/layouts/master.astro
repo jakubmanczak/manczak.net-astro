@@ -37,6 +37,9 @@ const {status} = Astro.props;
 	</head>
 	<body>
 		<header>
+			<a tabindex="0" class="nav" id="skipNav" href="#contentAnchor">
+				Skip to content
+			</a>
 			<nav tabindex="0" id="navDrop">
 				<img src="/assets/svg/menu.svg" alt="menu button">
 				<div class="dropdown dropdown-left">
@@ -112,7 +115,7 @@ const {status} = Astro.props;
 				</div>
 			</nav>
 		</header>
-		<div class="slotClass">
+		<div class="slotClass" id="contentAnchor">
 			<slot />
 		</div>
 		<footer class="tc">
@@ -231,7 +234,7 @@ const {status} = Astro.props;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			nav{
+			nav,a.nav{
 				padding: .5rem;
 				border-radius: var(--radius1);
 				transition-duration: var(--trandur);
@@ -256,6 +259,22 @@ const {status} = Astro.props;
 				}
 				&.disabled{
 					img{ filter: invert(20%); }
+				}
+				&#skipNav{
+					position: absolute;
+					/* opacity: 0; */
+					z-index: 1;
+					/* left: -15rem; */
+					top: -10rem;
+					background: var(--dark1);
+					padding: 1rem;
+					color: var(--lite1);
+					&:focus{
+						opacity: 1;
+						/* left: 1rem; */
+						top: 1rem;
+						/* background: var(--dark1); */
+					}
 				}
 				.dropdown{
 					--dropdown-inside-margins: .7rem 0;
