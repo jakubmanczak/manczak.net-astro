@@ -2,10 +2,103 @@
 import Layout from '../layouts/master.astro';
 ---
 <Layout status="About Me">
-	<div class="constrained tc">
-		<p>
-			Work In Progress. <br>
-			<a href="/">Return to monke.</a>
-		</p>
+	<div class="constrained">
+		<section>
+			<h3>Quick Summary - <em>Who The Hell Am I!?</em></h3>
+			<p class="washed">Essentially an extended social media bio.</p>
+			<p id="quickSum">
+				Hello! My name is Jakub Mańczak, I'm 17 and I was born in Poznań, Poland. <br>
+				<br>
+				I am about halfway done with my education in a technical school. The things
+				I'm interested in the most are what I hope to make my career one day, which
+				is to say IT - the passion for it spawned of course from a child's love of
+				video games. I find the tech behind interfaces shown to the user in all forms
+				of electronic product fascinating, whether it's a website, a desktop or mobile
+				app or - once again - a video game. <br>
+				<br>
+				I am currently focusing on broadening my knowledge of all things IT though,
+				that including server infrastructure and usage, as well as the physical side of things.
+				It's not exactly my cup of tea, but it's required due to my choice of school! :) <br>
+				<br>
+				There's a few links I'd like you to become acquainted with.
+				<a href="/urls">You can take a look at 'em here!</a> :)
+			</p>
+		</section>
+		<!-- <section>
+			<h3>Curriculum Vitae - <em>What I Can Certifiably Do</em></h3>
+			<p class="washed">Spoiler: the CV dies in the end.</p>
+			<p>
+				I do not have one. I have never applied for a job before and therefore had no need to make one.
+				If you're even reading this at all it means you're going through code. Why? 
+			</p>
+		</section> -->
+		<!-- <section>
+			<h3>Photos</h3>
+			<p class="washed">Look at my ugly face! Bask in all its glory! Oooooh, it's a face.</p>
+		</section> -->
+		<section id="alias">
+			<h3>Aliases</h3>
+			<p class="washed">As many interweb users, I've used many names on many-a-websites. Here's most.</p>
+			<p>
+				<ul>
+					<li id="aliasJamesen">
+						Most of the time I go by <span class="em2 em3">jamesen</span>.
+					</li>
+					<p>
+						The etymology is simple, though more different than you might expect:
+						while playing counter-strike with friends a long time ago, possibly
+						somewhere from 2014 to '16, inspired by Gabe Newell's famous "Gaben" nom de guerre,
+						we decided to all rename ourselves appending "en" to anglicized versions of our names.
+						I decided to use james instead of jacob as it sounded nicer to me while biblically
+						translating the same way, and it stuck!
+					</p>
+					<li>
+						"jamesen" is sometimes shortened to <span class="em2 em3">jasen</span>.
+					</li>
+					<p>
+						...And that comes from a simple pronounciation joke a friend did on a discord call. ;)
+					</p>
+					<li>
+						<span class="em2 em3">kubek</span> was an attempt by a teen me to get rid of "jamesen".
+					</li>
+					<p>
+						"jamesen" being a product of an early teenage me, a slightly less early teenage version
+						of me tried to get rid of it, burn it with fire and bury it underground. The attempt
+						lasted a few months. Failed.
+					</p>
+					<li>
+						<span class="em2 em3">j4mesen</span> and other leetspeak versions also exist.
+					</li>
+					<p>
+						Though fortunately they are not the result of any teenage hormone-induced leetspeak
+						superiority period - but they stem from the fact that replacing letters with numbers
+						makes for a good replacement if names are taken on some services - in Minecraft for example,
+						I use "j4mesen" entirely because "jamesen" was already in use.
+					</p>
+					<li>
+						And then there's <span class="em2 em3">jakub228</span> && <span class="em2 em3">szeryf777</span>.
+					</li>
+					<p>
+						Very unlikely anybody knows me by these names, but have 'em anyway: "jakub228" is my persona
+						coined by a 9 year old me in 2013, because I needed a name to get Minecraft. "szeryf777" is
+						even worse: quite literally taken a friend's "szeryf77" and added another "7" to the mix.
+						Since 2014, it is to this day my steam account's username, as it cannot be changed. ;/
+					</p>
+				</ul>
+			</p>
+		</section>
 	</div>
 </Layout>
+
+<style lang="scss">
+	section{
+		margin: 3.5rem 0;
+		&:first-of-type{
+			margin-top: 2rem;
+		}
+		p:not(.washed){
+			margin: 1rem 0;
+			text-align: justify;
+		}
+	}
+</style>

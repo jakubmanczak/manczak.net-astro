@@ -36,6 +36,8 @@ body {
 	background-color: var(--dark1);
 	color: var(--lite1);
 	font-size: 1.1rem;
+	// overflow: overlay;
+	// thonk?
 }
 
 .nomotion {
@@ -89,6 +91,14 @@ h4 {
 .tc {
 	text-align: center;
 }
+.em2 {
+	background-color: var(--dark2);
+	padding: 0 0.2rem;
+	border-radius: var(--radius1);
+}
+.em3 {
+	font-size: 1.1em;
+}
 .constrained {
 	width: var(--layout-width);
 	margin: 0 auto;
@@ -96,6 +106,14 @@ h4 {
 ::selection {
 	background-color: var(--purp1);
 	color: #000;
+}
+::-webkit-scrollbar {
+	width: 12px;
+	background: var(--dark1);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--dark2);
+	border-radius: var(--radius2);
 }
 
 @media screen and (max-width: 800px) {
