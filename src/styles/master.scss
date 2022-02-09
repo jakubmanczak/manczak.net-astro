@@ -21,9 +21,9 @@
 
 	// animation timings - brought here for nomotion
 	--profile-animation-duration: 0.5s;
-	--button1-animation-duration: 0.75s;
-	--button2-animation-duration: 1s;
-	--button3-animation-duration: 1.25s;
+	// delayed & delayed-delay use a calc( var(--delayed ) + ( nth * --delayed-delay ) ) formula
+	--delayed-animation-duration: 0.5s; // the base value used for buttons or section animated ins
+	--delayed-animation-duration-delay: 0.25s; // the value multiplied by n depending on nth element using the animation
 	--icon-setting-toggle-animation-duration: 0.5s;
 }
 * {
