@@ -1,0 +1,41 @@
+<div id="pinCards"></div>
+
+<script>
+	fetch('https://dudek.ga/api/pinned?username=jakubmanczak')
+		.then((response) => response.json())
+		.then((data) => {
+			data.forEach((element) => {
+				console.log(element);
+
+				// i need something like v-for from vue
+				// or {#each} from svelte somehow to work here rn!!
+				let bigcard = document.createElement('div');
+				bigcard.setAttribute('tabindex', '0');
+				// bigcard.style = `
+				// 	display: inline-block;
+				// 	border: 2px solid var(--dark3);
+				// 	border-radius: var(--radius1);
+				// 	padding: 1rem;
+				// `;
+				let reponame = document.createElement('p');
+				reponame.innerText = `${element.owner}/${element.repo}`;
+
+				bigcard.append(reponame);
+
+				console.log(bigcard);
+				document.querySelector('#pinCards').appendChild(bigcard);
+			});
+		});
+</script>
+
+<style lang="scss">
+	#pinCards {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		padding: 1rem 0;
+		// putting the styles for an element inserted like above doesn't work for some reason
+		// and setting the styles via script is cringe
+		// gotta find a way to do this better
+	}
+</style>

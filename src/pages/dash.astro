@@ -1,12 +1,18 @@
 ---
 import Layout from '../layouts/master.astro';
+import Pinned from '../components/pinned.astro';
 ---
 
 <Layout status="Dashboard">
-	<div class="constrained tc">
-		<p>
-			Work In Progress. <br />
-			<a href="/">Return to monke.</a>
+	<div class="constrained">
+		<h2 class="tc">Projects</h2>
+		<p class="washed tc">
+			This page is not finished in any way, shape or form.
 		</p>
+		<section>
+			<h3>Pinned on GitHub</h3>
+			<p class="washed">Updating a list of best projects manually sucks.</p>
+			<Pinned client:idle />
+		</section>
 	</div>
 </Layout>

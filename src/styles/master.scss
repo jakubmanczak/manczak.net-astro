@@ -76,6 +76,36 @@ h4 {
 	font-family: var(--font-big);
 }
 
+section {
+	margin: 5rem 0;
+	&:first-of-type {
+		margin-top: 2rem;
+	}
+	&:last-of-type {
+		margin-bottom: 2rem;
+	}
+	p:not(.washed) {
+		margin: 1rem 0;
+		text-align: justify;
+	}
+	animation-name: sectionAnim; // prettier-ignore
+	&:nth-of-type(1){ animation-duration: calc(var(--delayed-animation-duration) + ( 1 * var(--delayed-animation-duration-delay) ) ); } // prettier-ignore
+	&:nth-of-type(2){ animation-duration: calc(var(--delayed-animation-duration) + ( 2 * var(--delayed-animation-duration-delay) ) ); } // prettier-ignore
+	&:nth-of-type(3){ animation-duration: calc(var(--delayed-animation-duration) + ( 3 * var(--delayed-animation-duration-delay) ) ); } // prettier-ignore
+	&:nth-of-type(4){ animation-duration: calc(var(--delayed-animation-duration) + ( 4 * var(--delayed-animation-duration-delay) ) ); } // prettier-ignore
+	&:nth-of-type(5){ animation-duration: calc(var(--delayed-animation-duration) + ( 5 * var(--delayed-animation-duration-delay) ) ); } // prettier-ignore
+	&:nth-of-type(6){ animation-duration: calc(var(--delayed-animation-duration) + ( 6 * var(--delayed-animation-duration-delay) ) ); } // prettier-ignore
+	@keyframes sectionAnim{
+		0%{ opacity: 0; transform: scale(.9) translateY(1rem); }
+		100%{ opacity: 1; transform: scale(1) translateY(0); }
+	}
+}
+header {
+	section {
+		margin: 0 !important; // stop the 'section' in master nav layout from being 2 thicc
+	}
+}
+
 .card {
 	display: inline-block;
 	border: 2px solid var(--dark3);
