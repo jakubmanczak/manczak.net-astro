@@ -1,34 +1,41 @@
 ---
-const {status} = Astro.props;
+const { status } = Astro.props;
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<title>manczak.net</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href={Astro.resolve('../styles/master.scss')}>
-		<link rel="icon" type="image/x-icon" href="favicon.png">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta charset="UTF-8">
-		<meta name="description" content="
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href={Astro.resolve('../styles/master.scss')} />
+		<link rel="icon" type="image/x-icon" href="favicon.png" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8" />
+		<meta
+			name="description"
+			content="
 			My name is Jakub Mańczak, people online call me jamesen
 			and I'm learning IT at a High School in Poznań, Poland.
-		">
+		"
+		/>
 		<script defer>
-			function playSfx(name){
-				if(!sMuteSound){
-					switch(name){
-						case 'sfxSwoosh': new Audio('/assets/swoosh.mp3').play(); break;
-						default: console.log('no such sfx');
+			function playSfx(name) {
+				if (!sMuteSound) {
+					switch (name) {
+						case 'sfxSwoosh':
+							new Audio('/assets/swoosh.mp3').play();
+							break;
+						default:
+							console.log('no such sfx');
 					}
 				}
 			}
 		</script>
 		<script defer>
 			let keyHistory = '';
-			document.addEventListener('keydown', ev => {
+			document.addEventListener('keydown', (ev) => {
 				keyHistory += ev.key;
-				if(keyHistory.endsWith('splash')){
+				if (keyHistory.endsWith('splash')) {
 					getSplash();
 					keyHistory = '';
 				}
@@ -41,76 +48,116 @@ const {status} = Astro.props;
 				Skip to content
 			</a>
 			<nav tabindex="0" id="navDrop">
-				<img src="/assets/svg/menu.svg" alt="menu button">
+				<img src="/assets/svg/menu.svg" alt="menu button" />
 				<div class="dropdown dropdown-left">
 					<a href="/" class="dropdown-link">
-						<img src="/assets/svg/home.svg" alt="house icon">
+						<img src="/assets/svg/home.svg" alt="house icon" />
 						Homepage
 					</a>
 					<a href="/info" class="dropdown-link">
-						<img src="/assets/svg/user.svg" alt="user icon">
+						<img src="/assets/svg/user.svg" alt="user icon" />
 						About Me
 					</a>
 					<a href="/read" class="dropdown-link">
-						<img src="/assets/svg/edit.svg" alt="pencil icon">
+						<img src="/assets/svg/edit.svg" alt="pencil icon" />
 						Writings
 					</a>
 					<a href="/dash" class="dropdown-link">
-						<img src="/assets/svg/clipboard.svg" alt="clipboard icon">
+						<img src="/assets/svg/clipboard.svg" alt="clipboard icon" />
 						Projects
 					</a>
 					<div class="dropdown-divider"></div>
 					<a href="/github" class="dropdown-link">
-						<img src="/assets/svg/github.svg" alt="github icon">
+						<img src="/assets/svg/github.svg" alt="github icon" />
 						GitHub
-						<img src="/assets/svg/external-link.svg" class="dropdown-extLink" alt="external link icon">
+						<img
+							src="/assets/svg/external-link.svg"
+							class="dropdown-extLink"
+							alt="external link icon"
+						/>
 					</a>
 					<a href="/twitter" class="dropdown-link">
-						<img src="/assets/svg/twitter.svg" alt="twitter icon">
+						<img src="/assets/svg/twitter.svg" alt="twitter icon" />
 						Twitter
-						<img src="/assets/svg/external-link.svg" class="dropdown-extLink" alt="external link icon">
+						<img
+							src="/assets/svg/external-link.svg"
+							class="dropdown-extLink"
+							alt="external link icon"
+						/>
 					</a>
 					<div class="dropdown-divider"></div>
 					<a href="/urls" class="dropdown-link">
-						<img src="/assets/svg/link.svg" alt="link icon">
+						<img src="/assets/svg/link.svg" alt="link icon" />
 						All Links
 					</a>
 				</div>
 			</nav>
 			<section class="mStatus washed">{status}</section>
 			<nav tabindex="0" id="settingsDrop">
-				<img src="/assets/svg/sliders.svg" alt="preferences button">
+				<img src="/assets/svg/sliders.svg" alt="preferences button" />
 				<div class="dropdown dropdown-rite">
 					<a class="dropdown-link" tabindex="0" id="controlAnimation">
-						<img src="/assets/svg/video.svg" alt="video icon">
+						<img src="/assets/svg/video.svg" alt="video icon" />
 						Animations
-						<img src="/assets/svg/square.svg" alt="animations off control icon" id="controlAnimationOffIcon" style="display: none;">
-						<img src="/assets/svg/check-square.svg" alt="animations on control icon" id="controlAnimationOnIcon" style="display: none;">
+						<img
+							src="/assets/svg/square.svg"
+							alt="animations off control icon"
+							id="controlAnimationOffIcon"
+							style="display: none;"
+						/>
+						<img
+							src="/assets/svg/check-square.svg"
+							alt="animations on control icon"
+							id="controlAnimationOnIcon"
+							style="display: none;"
+						/>
 					</a>
 					<a class="dropdown-link" tabindex="0" id="controlSound">
-						<img src="/assets/svg/volume-2.svg" alt="volume icon">
+						<img src="/assets/svg/volume-2.svg" alt="volume icon" />
 						Sounds
-						<img src="/assets/svg/square.svg" alt="sounds off control icon" id="controlSoundOffIcon" style="display: none;">
-						<img src="/assets/svg/check-square.svg" alt="sounds on control icon" id="controlSoundOnIcon" style="display: none;">
+						<img
+							src="/assets/svg/square.svg"
+							alt="sounds off control icon"
+							id="controlSoundOffIcon"
+							style="display: none;"
+						/>
+						<img
+							src="/assets/svg/check-square.svg"
+							alt="sounds on control icon"
+							id="controlSoundOnIcon"
+							style="display: none;"
+						/>
 					</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-link disabled" tabindex="-1" id="controlLiteTheme">
-						<img src="/assets/svg/sun.svg" alt="sun icon">
+						<img src="/assets/svg/sun.svg" alt="sun icon" />
 						Light Theme
-						<img src="/assets/svg/square.svg" alt="light theme off control icon" id="controlLiteThemeOffIcon">
+						<img
+							src="/assets/svg/square.svg"
+							alt="light theme off control icon"
+							id="controlLiteThemeOffIcon"
+						/>
 						<!-- <img src="/assets/svg/check-square.svg" alt="light theme on control icon" id="controlLiteThemeOnIcon"> -->
 					</a>
 					<a class="dropdown-link disabled" tabindex="-1" id="controlDarkTheme">
-						<img src="/assets/svg/moon.svg" alt="moon icon">
+						<img src="/assets/svg/moon.svg" alt="moon icon" />
 						Dark Theme
 						<!-- <img src="/assets/svg/square.svg" alt="dark theme off control icon" id="controlDarkThemeOffIcon"> -->
-						<img src="/assets/svg/check-square.svg" alt="dark theme on control icon" id="controlDarkThemeOnIcon">
+						<img
+							src="/assets/svg/check-square.svg"
+							alt="dark theme on control icon"
+							id="controlDarkThemeOnIcon"
+						/>
 					</a>
 					<div class="dropdown-divider"></div>
 					<a href="/source" class="dropdown-link">
-						<img src="/assets/svg/code.svg" alt="code icon">
+						<img src="/assets/svg/code.svg" alt="code icon" />
 						Source Code
-						<img src="/assets/svg/external-link.svg" class="dropdown-extLink" alt="external link icon">
+						<img
+							src="/assets/svg/external-link.svg"
+							class="dropdown-extLink"
+							alt="external link icon"
+						/>
 					</a>
 				</div>
 			</nav>
@@ -121,146 +168,205 @@ const {status} = Astro.props;
 		<footer class="tc">
 			manczak.net
 			<span class="washed">
-				~ 2019-2022 <br>
+				~ 2019-2022 <br />
 				&copy; Jakub Mańczak
 			</span>
 		</footer>
-		<script defer> // script for the settings
+		<script defer>
+			// script for the settings
 			let sMuteSound;
 
 			// apply default settings if localStorage doesn't exist
-			if(!window.localStorage.getItem('sNoMotion')){
+			if (!window.localStorage.getItem('sNoMotion')) {
 				window.localStorage.setItem('sNoMotion', 'false');
 			}
-			if(!window.localStorage.getItem('sMuteSound')){
+			if (!window.localStorage.getItem('sMuteSound')) {
 				window.localStorage.setItem('sMuteSound', 'false');
 			}
 
 			// checking localStorage and applying the settings according to them
-			if(window.localStorage.getItem('sNoMotion') === 'true'){
+			if (window.localStorage.getItem('sNoMotion') === 'true') {
 				document.querySelector('body').classList.add('nomotion');
-				document.querySelector('#controlAnimationOffIcon').style.display = 'block';
-			}else{
-				document.querySelector('#controlAnimationOnIcon').style.display = 'block';
+				document.querySelector('#controlAnimationOffIcon').style.display =
+					'block';
+			} else {
+				document.querySelector('#controlAnimationOnIcon').style.display =
+					'block';
 			}
-			if(window.localStorage.getItem('sMuteSound') === 'true'){
+			if (window.localStorage.getItem('sMuteSound') === 'true') {
 				sMuteSound = true;
 				document.querySelector('#controlSoundOffIcon').style.display = 'block';
-			}else{
+			} else {
 				document.querySelector('#controlSoundOnIcon').style.display = 'block';
 			}
 
 			// settings functions
-			function setNoMotionSetting(){
-				if(window.localStorage.getItem('sNoMotion') === 'false'){
+			function setNoMotionSetting() {
+				if (window.localStorage.getItem('sNoMotion') === 'false') {
 					window.localStorage.setItem('sNoMotion', 'true');
 					document.querySelector('body').classList.add('nomotion');
-					document.querySelector('#controlAnimationOffIcon').style.display = 'block';
-					document.querySelector('#controlAnimationOnIcon').style.display = 'none';
-				}else{
+					document.querySelector('#controlAnimationOffIcon').style.display =
+						'block';
+					document.querySelector('#controlAnimationOnIcon').style.display =
+						'none';
+				} else {
 					window.localStorage.setItem('sNoMotion', 'false');
 					document.querySelector('body').classList.remove('nomotion');
-					document.querySelector('#controlAnimationOffIcon').style.display = 'none';
-					document.querySelector('#controlAnimationOnIcon').style.display = 'block';
-					document.querySelector('#controlAnimationOffIcon').classList.add('iconAnim');
-					document.querySelector('#controlAnimationOnIcon').classList.add('iconAnim');
+					document.querySelector('#controlAnimationOffIcon').style.display =
+						'none';
+					document.querySelector('#controlAnimationOnIcon').style.display =
+						'block';
+					document
+						.querySelector('#controlAnimationOffIcon')
+						.classList.add('iconAnim');
+					document
+						.querySelector('#controlAnimationOnIcon')
+						.classList.add('iconAnim');
 					removeIconAnims();
 				}
-				console.log(`noMotion setting now set to ${window.localStorage.getItem('sNoMotion')}!`);
+				console.log(
+					`noMotion setting now set to ${window.localStorage.getItem(
+						'sNoMotion'
+					)}!`
+				);
 			}
-			function setMuteSoundSetting(){
-				if(window.localStorage.getItem('sMuteSound') === 'false'){
+			function setMuteSoundSetting() {
+				if (window.localStorage.getItem('sMuteSound') === 'false') {
 					window.localStorage.setItem('sMuteSound', 'true');
 					sMuteSound = true;
-					document.querySelector('#controlSoundOffIcon').style.display = 'block';
+					document.querySelector('#controlSoundOffIcon').style.display =
+						'block';
 					document.querySelector('#controlSoundOnIcon').style.display = 'none';
-					document.querySelector('#controlSoundOffIcon').classList.add('iconAnim');
-					document.querySelector('#controlSoundOnIcon').classList.add('iconAnim');
+					document
+						.querySelector('#controlSoundOffIcon')
+						.classList.add('iconAnim');
+					document
+						.querySelector('#controlSoundOnIcon')
+						.classList.add('iconAnim');
 					removeIconAnims();
-				}else{
+				} else {
 					window.localStorage.setItem('sMuteSound', 'false');
 					sMuteSound = false;
 					document.querySelector('#controlSoundOffIcon').style.display = 'none';
 					document.querySelector('#controlSoundOnIcon').style.display = 'block';
-					document.querySelector('#controlSoundOffIcon').classList.add('iconAnim');
-					document.querySelector('#controlSoundOnIcon').classList.add('iconAnim');
+					document
+						.querySelector('#controlSoundOffIcon')
+						.classList.add('iconAnim');
+					document
+						.querySelector('#controlSoundOnIcon')
+						.classList.add('iconAnim');
 					removeIconAnims();
 				}
 				console.log(`muteSound setting now set to ${sMuteSound}!`);
 			}
 
 			// settings dropdown - nomotion switch
-			document.querySelector('#controlAnimation').addEventListener('click', () => {
-				setNoMotionSetting(); playSfx('sfxSwoosh');
-			});
-			document.querySelector('#controlAnimation').addEventListener('keydown', ev => {
-				if(ev.key === 'Enter'){ setNoMotionSetting(); playSfx('sfxSwoosh'); }
-			});
+			document
+				.querySelector('#controlAnimation')
+				.addEventListener('click', () => {
+					setNoMotionSetting();
+					playSfx('sfxSwoosh');
+				});
+			document
+				.querySelector('#controlAnimation')
+				.addEventListener('keydown', (ev) => {
+					if (ev.key === 'Enter') {
+						setNoMotionSetting();
+						playSfx('sfxSwoosh');
+					}
+				});
 
 			// settings dropdown - mutesound switch
 			document.querySelector('#controlSound').addEventListener('click', () => {
-				setMuteSoundSetting(); playSfx('sfxSwoosh');
+				setMuteSoundSetting();
+				playSfx('sfxSwoosh');
 			});
-			document.querySelector('#controlSound').addEventListener('keydown', ev => {
-				if(ev.key === 'Enter'){ setMuteSoundSetting(); playSfx('sfxSwoosh'); }
-			});
+			document
+				.querySelector('#controlSound')
+				.addEventListener('keydown', (ev) => {
+					if (ev.key === 'Enter') {
+						setMuteSoundSetting();
+						playSfx('sfxSwoosh');
+					}
+				});
 
 			// resetting the onclick animation for the icons
 			// so that it doesnt play on every dropdown open if it was changed in current session
-			// (( (( curse the css animation system!! )) 
-			function removeIconAnims(){
-				setTimeout(() => {					
-					document.querySelector('#controlAnimationOffIcon').classList.remove('iconAnim');
-					document.querySelector('#controlAnimationOnIcon').classList.remove('iconAnim');
-					document.querySelector('#controlSoundOffIcon').classList.remove('iconAnim');
-					document.querySelector('#controlSoundOnIcon').classList.remove('iconAnim');
+			// (( (( curse the css animation system!! ))
+			function removeIconAnims() {
+				setTimeout(() => {
+					document
+						.querySelector('#controlAnimationOffIcon')
+						.classList.remove('iconAnim');
+					document
+						.querySelector('#controlAnimationOnIcon')
+						.classList.remove('iconAnim');
+					document
+						.querySelector('#controlSoundOffIcon')
+						.classList.remove('iconAnim');
+					document
+						.querySelector('#controlSoundOnIcon')
+						.classList.remove('iconAnim');
 				}, 500); // this method comes with a caveat of bugging out a bit when the switch
 				// is being spammed a lot, oftentimes resulting in the animation being interrupted
 			}
-
 		</script>
 	</body>
 </html>
 
 <style lang="scss">
-	body{
+	body {
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
-		footer{ padding: 1rem; }
-		.slotClass{ flex: 1; }
-		header{
+		footer {
+			padding: 1rem;
+		}
+		.slotClass {
+			flex: 1;
+		}
+		header {
 			padding: 1rem;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			nav,a.nav{
-				padding: .5rem;
+			nav,
+			a.nav {
+				padding: 0.5rem;
 				border-radius: var(--radius1);
 				transition-duration: var(--trandur);
 				border: 2px solid var(--dark1);
 				outline: none;
 				position: relative;
-				img{
+				img {
 					display: block;
 					height: 24px;
 					filter: invert(40%);
 				}
-				&:hover{
+				&:hover {
 					background-color: var(--dark2);
 					border: 2px solid var(--dark2);
 					cursor: pointer;
-					img{ filter: invert(80%); }
+					img {
+						filter: invert(80%);
+					}
 				}
-				&:focus,&:focus-within{
+				&:focus,
+				&:focus-within {
 					border: 2px solid var(--purp1);
-					img{ filter: invert(80%); }
-					.dropdown{ display: block; }
+					img {
+						filter: invert(80%);
+					}
+					.dropdown {
+						display: block;
+					}
 				}
-				&.disabled{
-					img{ filter: invert(20%); }
+				&.disabled {
+					img {
+						filter: invert(20%);
+					}
 				}
-				&#skipNav{
+				&#skipNav {
 					position: absolute;
 					/* opacity: 0; */
 					z-index: 1;
@@ -269,15 +375,15 @@ const {status} = Astro.props;
 					background: var(--dark1);
 					padding: 1rem;
 					color: var(--lite1);
-					&:focus{
+					&:focus {
 						opacity: 1;
 						/* left: 1rem; */
 						top: 1rem;
 						/* background: var(--dark1); */
 					}
 				}
-				.dropdown{
-					--dropdown-inside-margins: .7rem 0;
+				.dropdown {
+					--dropdown-inside-margins: 0.7rem 0;
 					display: none;
 					position: absolute;
 					margin-top: 1rem;
@@ -288,41 +394,49 @@ const {status} = Astro.props;
 					z-index: 1;
 					width: 14rem;
 					user-select: none;
-					&.dropdown-left{ left: 0; }
-					&.dropdown-rite{ right: 0; }
-					.dropdown-link{
+					&.dropdown-left {
+						left: 0;
+					}
+					&.dropdown-rite {
+						right: 0;
+					}
+					.dropdown-link {
 						display: flex;
 						gap: 1rem;
 						/* justify-content: space-between; */
 						align-items: center;
-						padding: .5rem 1rem;
+						padding: 0.5rem 1rem;
 						color: var(--washed-dark);
 						background: var(--dark1);
 						outline: none;
-						img{
+						img {
 							filter: invert(40%);
-							&.iconAnim{
+							&.iconAnim {
 								animation-name: iconAnim;
-								animation-duration: var(--icon-setting-toggle-animation-duration);
+								animation-duration: var(
+									--icon-setting-toggle-animation-duration
+								);
 							}
 						}
 						/* .dropdown-extLink{ */
-						img:nth-of-type(2),img:nth-of-type(3){
-							transform: scale(.7);
+						img:nth-of-type(2),
+						img:nth-of-type(3) {
+							transform: scale(0.7);
 							margin-left: auto;
 						}
-						&.disabled{
-							opacity: .5;
+						&.disabled {
+							opacity: 0.5;
 						}
-						&:hover,&:focus{
+						&:hover,
+						&:focus {
 							color: var(--lite1);
 							background: var(--dark2);
-							img{
+							img {
 								filter: invert(70%) brightness(125%);
 							}
 						}
 					}
-					.dropdown-divider{
+					.dropdown-divider {
 						display: block;
 						height: 2px;
 						margin: var(--dropdown-inside-margins);
@@ -332,16 +446,20 @@ const {status} = Astro.props;
 			}
 		}
 	}
-	@media screen and (max-width: 800px){
-		.slotClass{
+	@media screen and (max-width: 800px) {
+		.slotClass {
 			padding: 1rem;
 		}
 	}
-	@keyframes iconAnim{
+	@keyframes iconAnim {
 		/* 0%{ transform: rotate(0deg); }
 		50%{ transform: rotate(180deg); }
 		100%{ transform: rotate(360deg) } */
-		from{ transform: rotate(0deg) scale(.7) }
-		to{ transform: rotate(360deg) scale(.7) }
+		from {
+			transform: rotate(0deg) scale(0.7);
+		}
+		to {
+			transform: rotate(360deg) scale(0.7);
+		}
 	}
 </style>

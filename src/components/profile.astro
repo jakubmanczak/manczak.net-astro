@@ -2,13 +2,24 @@
 	<div class="profileText">
 		<h2>jakub mańczak</h2>
 		<p class="washed" id="splashtext">splashtext not read correctly</p>
-		<p class="profileDescription">
-			My name is <a href="/info">Jakub Mańczak</a>, people online call me <a href="/info#alias">jamesen</a>
-			and I'm learning IT at a High School in Poznań, Poland.
+		<p class="profileDescription profNorm">
+			My name is <a href="/info">Jakub Mańczak</a>, people online call me
+			<a href="/info#alias">jamesen</a> and I'm learning IT at a High School in Poznań,
+			Poland.
+		</p>
+		<p class="profileDescription profCat" style="display: none;">
+			Watashi no namae wa <a href="/info">Nyakub Myańczak</a>, or often
+			<a href="/info#alias">jamesen</a> and I'm benkyo-ing IT @ a haiskuru in Poznyan,
+			Poland.
 		</p>
 	</div>
-	<!-- <img src="/favicon.png" alt="photo of me"> -->
-	<img src="/assets/jmanczakcat.png" alt="photo of me">
+	<img src="/assets/images/cat-ears.png" alt="photo of me" class="profNorm" />
+	<img
+		src="/favicon.png"
+		alt="photo of me"
+		class="profCat"
+		style="display: none;"
+	/>
 	<script>
 		const splashTexts = [
 			'featherless biped',
@@ -22,48 +33,50 @@
 			'Zdefiniujmy pojęcie kartkówki...',
 			'kocham ich; kocham ich całym wagonem',
 			`I wear glasses because I can't C#.`,
-			'if you water water, it grows'
+			'if you water water, it grows',
 		];
 		let splash;
 
-		function getSplash(){
-			splash = splashTexts[ Math.floor( Math.random() * splashTexts.length ) ];
+		function getSplash() {
+			splash = splashTexts[Math.floor(Math.random() * splashTexts.length)];
 			document.querySelector('#splashtext').innerText = splash;
 		}
 		getSplash();
 
 		document.querySelector('.profile>img').addEventListener('click', () => {
-			getSplash(); playSfx('sfxSwoosh');
+			getSplash();
+			playSfx('sfxSwoosh');
 		});
 	</script>
 </div>
 
 <style lang="scss" scoped>
-	.profile{
+	.profile {
 		display: flex;
 		justify-content: space-between;
 		margin: 4rem 0;
 		animation-name: profileAnim;
 		animation-duration: var(--profile-animation-duration);
-		.profileDescription{
+		.profileDescription {
 			margin-top: 1rem;
 			max-width: 48ch;
 		}
-		img{
+		img {
 			height: 128px;
 			background: var(--purp2);
 			border-radius: var(--radius3);
 			transition-duration: var(--trandur);
 			outline: 2px solid var(--dark1);
-			&:hover,&:focus{
+			&:hover,
+			&:focus {
 				cursor: pointer;
 				outline: 2px solid var(--purp1);
 				transform: rotate(6deg);
 			}
 		}
 	}
-	@media screen and (max-width: 800px){
-		.profile{
+	@media screen and (max-width: 800px) {
+		.profile {
 			margin: 2rem 0;
 			flex-direction: column-reverse;
 			justify-content: center;
@@ -71,8 +84,14 @@
 			text-align: center;
 		}
 	}
-	@keyframes profileAnim{
-		from{ opacity: 0; transform: rotate(-1deg) scale(.9); }
-		to{ opacity: 1; transform: rotate(0) scale(1); }
+	@keyframes profileAnim {
+		from {
+			opacity: 0;
+			transform: rotate(-1deg) scale(0.9);
+		}
+		to {
+			opacity: 1;
+			transform: rotate(0) scale(1);
+		}
 	}
 </style>
