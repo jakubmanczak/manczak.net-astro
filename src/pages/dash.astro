@@ -16,3 +16,23 @@ import Pinned from '../components/pinned.astro';
 		</section>
 	</div>
 </Layout>
+
+<style lang="scss" scoped>
+	div {
+		h2.tc,
+		p.washed.tc {
+			animation-name: fadeinHere;
+			animation-duration: var(--delayed-animation-duration);
+		}
+	}
+	@keyframes fadeinHere {
+		from {
+			transform: scale(0.9) translateY(-3rem);
+			opacity: 0;
+		}
+		to {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+</style>
