@@ -9,18 +9,41 @@
 
 				// i need something like v-for from vue
 				// or {#each} from svelte somehow to work here rn!!
-				let bigcard = document.createElement('div');
+				let bigcard = document.createElement('a');
 				bigcard.setAttribute('tabindex', '0');
-				// bigcard.style = `
-				// 	display: inline-block;
-				// 	border: 2px solid var(--dark3);
-				// 	border-radius: var(--radius1);
-				// 	padding: 1rem;
-				// `;
-				let reponame = document.createElement('p');
-				reponame.innerText = `${element.owner}/${element.repo}`;
+				bigcard.setAttribute('href', element.link);
+				bigcard.classList.add('card', 'repo');
 
+				let reponame = document.createElement('h4');
+				reponame.innerHTML = `<span class="washed">${element.owner}/</span>${element.repo}`;
 				bigcard.append(reponame);
+
+				let repodesc = document.createElement('p');
+				repodesc.innerText = element.description;
+				repodesc.classList.add('washed');
+				bigcard.append(repodesc);
+
+				let repobar = document.createElement('div');
+				repobar.classList.add('repobar', 'iswhite');
+				bigcard.append(repobar);
+
+				let repolang = document.createElement('div');
+				repolang.classList.add('repolang');
+				let repolangdot = document.createElement('div');
+				repolangdot.style.backgroundColor = element.color;
+				repolang.append(repolangdot);
+				repolang.append(document.createTextNode(element.language));
+				repobar.append(repolang);
+
+				let repostats = document.createElement('div');
+				repostats.classList.add('repostats', 'washed');
+				repobar.append(repostats);
+				let repostatsForkCount = document.createElement('p');
+				repostatsForkCount.innerText = `${element.forks} forks`;
+				repostats.append(repostatsForkCount);
+				let repostatsStarCount = document.createElement('p');
+				repostatsStarCount.innerText = `${element.stars} stars`;
+				repostats.append(repostatsStarCount);
 
 				console.log(bigcard);
 				document.querySelector('#pinCards').appendChild(bigcard);
@@ -31,11 +54,10 @@
 <style lang="scss">
 	#pinCards {
 		display: flex;
+		justify-content: center;
 		flex-wrap: wrap;
 		gap: 1rem;
 		padding: 1rem 0;
-		// putting the styles for an element inserted like above doesn't work for some reason
-		// and setting the styles via script is cringe
-		// gotta find a way to do this better
+		// styles for other elements are in master.scss under &.repo in .card
 	}
 </style>

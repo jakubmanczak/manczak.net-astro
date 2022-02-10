@@ -25,6 +25,7 @@
 	--delayed-animation-duration: 0.5s; // the base value used for buttons or section animated ins
 	--delayed-animation-duration-delay: 0.25s; // the value multiplied by n depending on nth element using the animation
 	--icon-setting-toggle-animation-duration: 0.5s;
+	--repo-animation-dur: 0.2s;
 }
 * {
 	margin: 0;
@@ -46,6 +47,7 @@ body {
 	--delayed-animation-duration: 0;
 	--delayed-animation-duration-delay: 0;
 	--icon-setting-toggle-animation-duration: 0;
+	--repo-animation-dur: 0;
 }
 
 a {
@@ -112,6 +114,68 @@ header {
 	border-radius: var(--radius1);
 	padding: 1rem;
 	margin: 1rem 0;
+	&.repo {
+		display: inline-flex;
+		flex-direction: column;
+		padding: 1rem;
+		margin: 0;
+		width: 21rem;
+		animation-name: repoIn;
+		animation-duration: var(--repo-animation-dur);
+		font-size: 1rem;
+		color: white;
+		background: inherit;
+		h4 {
+			margin: 0;
+			padding: 0;
+		}
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		:last-child {
+			justify-self: flex-end;
+		}
+		.iswhite {
+			color: white;
+		}
+		.repobar {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			margin-top: 1rem;
+			.repolang {
+				display: flex;
+				align-items: baseline;
+				div {
+					// this is the dot
+					display: inline-block;
+					width: 0.7rem;
+					height: 0.7rem;
+					margin-right: 0.4rem;
+					// background-color: var(--dark1);
+					border-radius: var(--radius1);
+				}
+			}
+			.repostats {
+				display: flex;
+				gap: 1rem;
+			}
+		}
+		&:hover {
+			background-color: var(--dark2);
+		}
+		&:focus {
+			border: 2px solid var(--purp1);
+			color: var(--purp1);
+		}
+	}
+	@keyframes repoIn {
+		from {
+			transform: scale(0.9) translateY(1rem);
+			opacity: 0;
+		}
+	}
 }
 
 .washed {
