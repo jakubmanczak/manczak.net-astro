@@ -80,6 +80,7 @@ h4 {
 
 section {
 	margin: 5rem 0;
+	transition-duration: var(--trandur);
 	&:first-of-type {
 		margin-top: 2rem;
 	}
@@ -89,6 +90,12 @@ section {
 	p:not(.washed) {
 		margin: 1rem 0;
 		text-align: justify;
+	}
+	&.feat{
+		background-color: var(--dark2);
+		border-bottom: .3rem solid var(--dark3);
+		padding: 1.5rem;
+		border-radius: var(--radius1) var(--radius1) 0 0;
 	}
 	animation-name: sectionAnim; // prettier-ignore
 	&:nth-of-type(1){ animation-duration: calc(var(--delayed-animation-duration) + ( 1 * var(--delayed-animation-duration-delay) ) ); } // prettier-ignore
