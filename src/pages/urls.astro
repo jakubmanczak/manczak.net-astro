@@ -2,11 +2,84 @@
 import Layout from '../layouts/master.astro';
 ---
 
-<Layout status="Short Links">
-	<div class="constrained tc">
-		<p>
-			Work In Progress. <br />
-			<a href="/">Return to monke.</a>
-		</p>
+<Layout status="Hyperlinks">
+	<div class="constrained tc" style="display:flex;flex-direction:column;align-items:center;">
+			<h3>This is a Work In Progress page.</h3>
+			<p>Please check back soon!</p>
+			<div class="card">
+			<div class="cardLeft">
+				<img src="/favicon.png" alt="manczak.net icon">
+				<h4>manczak.net</h4>
+				<p class="washed">You're here right now!</p>
+			</div>
+			<div class="cardRight">
+				<a href="/urls">
+					<img src="/assets/svg/link.svg" alt="copy link to item!">
+				</a>
+				<a href="/">
+					<img src="/assets/svg/external-link.svg" alt="surf the web to item!">
+				</a>
+			</div>
+		</div>
+		<div class="card">
+			<div class="cardLeft">
+				<img src="/favicon.png" alt="manczak.net icon">
+				<h4>manczak.net</h4>
+				<p class="washed">You're here right now!</p>
+			</div>
+			<div class="cardRight">
+				<a href="/urls">
+					<img src="/assets/svg/link.svg" alt="copy link to item!">
+				</a>
+				<a href="/">
+					<img src="/assets/svg/external-link.svg" alt="surf the web to item!">
+				</a>
+			</div>
+		</div>
 	</div>
 </Layout>
+
+<style lang="scss" scoped>
+	.card{
+		width: 75%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+		.cardLeft{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			gap: 1rem;
+			img{
+				height: 2rem;
+				margin: 0;
+			}
+		}
+		.cardRight{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			gap: 1rem;
+			a{
+				background: var(--dark1);
+				border: 2px solid var(--dark3);
+				border-radius: var(--radius1);
+				padding: 0;
+				margin: 0;
+				img{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					filter: invert(80%);
+					padding: .4rem;
+				}
+				&:hover{
+					background-color: var(--dark2);
+				}
+			}
+		}
+	}
+</style>
