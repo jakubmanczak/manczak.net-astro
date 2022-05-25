@@ -9,8 +9,8 @@
 		</p>
 		<p class="profileDescription profCat" style="display: none;">
 			Watashi no namae wa <a href="/info">Nyakub Myańczak</a>, or often
-			<a href="/info#alias">jamesen</a> and I'm benkyo-ing IT @ a haiskuru in Poznyan,
-			Poland.
+			<a href="/info#alias">jamesen</a> and I benkyo IT @ a haiskuru in Poznyan,
+			Poland. ツ
 		</p>
 	</div>
 	<img src="/assets/images/cat-ears.png" alt="photo of me" class="profNorm" />
@@ -33,6 +33,14 @@
 			document.querySelector('#splashtext').innerText = splash;
 		}
 		getSplash();
+		function catMode() {
+			document.querySelectorAll('.profNorm').forEach((el) => {
+				el.setAttribute('style', 'display: none;');
+			});
+			document.querySelectorAll('.profCat').forEach((el) => {
+				el.setAttribute('style', 'display: block');
+			});
+		}
 
 		document.querySelector('.profile>img').addEventListener('click', () => {
 			getSplash();

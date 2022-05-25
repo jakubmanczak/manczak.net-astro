@@ -18,9 +18,12 @@ const { status } = Astro.props;
 			and I'm learning IT at a High School in Poznań, Poland.
 		"
 		/>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&family=Quicksand&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&family=Quicksand&display=swap"
+			rel="stylesheet"
+		/>
 		<script defer>
 			function playSfx(name) {
 				if (!sMuteSound) {
@@ -40,6 +43,10 @@ const { status } = Astro.props;
 				keyHistory += ev.key;
 				if (keyHistory.endsWith('splash')) {
 					getSplash();
+					keyHistory = '';
+				}
+				if (keyHistory.endsWith('catmode')) {
+					catMode();
 					keyHistory = '';
 				}
 			});
